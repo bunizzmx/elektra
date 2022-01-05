@@ -19,7 +19,6 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         configureDagger()
-        //  FirebaseCrashlytics.getInstance().setUserId("Lupo");
     }
 
 
