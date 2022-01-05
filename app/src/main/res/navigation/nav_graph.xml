@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listaPockemonesFragment">
+
+
+    <fragment
+        tools:layout="@layout/fragment_pokemones"
+        android:id="@+id/listaPockemonesFragment"
+        android:name="com.elektraexample.pokemon_elektra.presentation.ui.ListaPockemonesFragment"
+        android:label="ListaPockemonesFragment" >
+        <action
+            android:id="@+id/action_listaPockemonesFragment_to_detallePockemonFragment"
+            app:destination="@id/detallePockemonFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/detalle_pokemon"
+        android:id="@+id/detallePockemonFragment"
+        android:name="com.elektraexample.pokemon_elektra.presentation.ui.DetallePockemonFragment"
+        android:label="DetallePockemonFragment" >
+        <argument
+            android:name="idPokemon"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="null"
+            />
+    </fragment>
+</navigation>
