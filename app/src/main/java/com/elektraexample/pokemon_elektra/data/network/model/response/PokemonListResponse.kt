@@ -13,5 +13,4 @@ data class PokemonListResponse(
     @SerializedName("next")
 @Expose
 var next: String? = null,
-) {
-}
+)

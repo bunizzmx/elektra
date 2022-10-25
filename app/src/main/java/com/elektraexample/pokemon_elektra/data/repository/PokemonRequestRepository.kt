@@ -2,7 +2,6 @@ package com.elektraexample.pokemon_elektra.data.repository
 
 
 
-import com.elektraexample.pokemon_elektra.data.network.HandleServiceError
 import com.elektraexample.pokemon_elektra.data.network.ServiceApi
 import com.elektraexample.pokemon_elektra.data.network.model.PokemonListRequest
 import com.elektraexample.pokemon_elektra.data.network.model.response.PokemonListResponse
@@ -17,29 +16,21 @@ import javax.inject.Singleton
 class PokemonRequestRepository
 @Inject constructor(
     private val apiInvex: ServiceApi,
-) : HandleServiceError(), PockemonRepository {
+) : PockemonRepository {
 
 
 
-    companion object {
-        private const val APP = 1
-    }
 
 
     override fun getListPokemons(): Single<PokemonListResponse> {
-        val body = PokemonListRequest()
         return apiInvex.getListPokemons().map { serviceResponse ->
-            handleResponse(serviceResponse)
             val response = serviceResponse.body()
-            //saveSession(response, username)
-            //savePassword(password)
             return@map response
         }
     }
 
     override fun getDetailPokemon(idPokemon: String): Single<PokemonDetail> {
         return apiInvex.getDetailPockemon(idPokemon).map { serviceResponse ->
-            handleResponse(serviceResponse)
             val response = serviceResponse.body()
             return@map response
         }

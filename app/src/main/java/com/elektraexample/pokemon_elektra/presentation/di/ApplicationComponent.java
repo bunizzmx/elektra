@@ -13,7 +13,5 @@ import dagger.Component;
 @Component(modules = {ApplicationModule.class, DataSourceModule.class, NetworkModule.class})
 public interface ApplicationComponent {
     PockemonRepository activationCardRepository();
-
-
 }
 

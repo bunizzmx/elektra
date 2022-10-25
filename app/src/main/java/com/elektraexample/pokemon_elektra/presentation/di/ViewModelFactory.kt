@@ -5,13 +5,14 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
+import com.elektraexample.pokemon_elektra.data.repository.PokemonRequestRepository
 import com.elektraexample.pokemon_elektra.domain.repository.PockemonRepository
 import com.elektraexample.pokemon_elektra.presentation.ui.PokemonViewModel
 
 
 @Suppress("UNCHECKED_CAST")
 class ViewModelFactory(
-    private val sessionRepository: PockemonRepository,
+    private val core: PockemonRepository,
     owner: SavedStateRegistryOwner,
     defaultArgs: Bundle?
 ) :
@@ -19,7 +20,7 @@ class ViewModelFactory(
 
     override fun <T : ViewModel?> create(key: String, clazz: Class<T>, state: SavedStateHandle): T {
         val viewModel: ViewModel = if (clazz == PokemonViewModel::class.java) {
-            PokemonViewModel(sessionRepository)
+            PokemonViewModel(core)
         } else {
             throw RuntimeException("Unsupported view model class: $clazz")
         }
